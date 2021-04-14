@@ -35,10 +35,42 @@ PlaygroundPage.current.liveView = canvas
  [Documentation](http://russellgordon.ca/CanvasGraphics/Documentation/) is available.
 
  */
+"""
+//Move the turtle to middle-bottom of the canvas
+turtle.forward(steps: canvas.width / 2)
+turtle.drawSelf()
 
-// Replace this comment with your first comment – what is the goal of the code you're about to write?
-canvas.drawRectangle(at: Point(x: 50, y: 75), width: 100, height: 200)
+//Get the turtle to the exact middle of canvas
+turtle.left(by: 90)
+turtle.forward(steps: canvas.height / 2)
+turtle.drawSelf()
 
+//See if the turtle can face to the right side of the canvas
+turtle.right(by: 90)
+turtle.drawSelf()
+"""
+
+//Teach the turtle how to move from the origin (bottom-left corner) to the centre of the canvas
+func turtleToMiddleOfCanvas(){
+    
+    //Move turtle to middle of bottom edge of canvas
+    turtle.penUp()
+    turtle.forward(steps: canvas.width / 2)
+    turtle.currentHeading()
+    
+    //Move turtle to dead centre of canvas
+    turtle.left(by: 90)
+    turtle.currentHeading()
+    turtle.penUp()
+    turtle.forward(steps: canvas.height / 2)
+    
+    //Turn the turtle to the right
+    turtle.right(by: 90)
+}
+
+//Actually get the turtle to move to the centre of the canvas
+turtleToMiddleOfCanvas()
+turtle.drawSelf()
 /*:
  ## Show the Live View
  Don't see any results?
