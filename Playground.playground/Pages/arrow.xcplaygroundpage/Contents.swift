@@ -25,16 +25,7 @@ let turtle = Tortoise(drawingUpon: canvas)
 
 // Show the canvas in the playground's live view
 PlaygroundPage.current.liveView = canvas
-/*:
- ## Add your code
- 
- Beginning on line 48, write a meaningful comment.
- 
- You can remove the code on line 49 and begin writing your own code.
- 
- [Documentation](http://russellgordon.ca/CanvasGraphics/Documentation/) is available.
 
- */
 //Move the turtle to the centre of the canvas
 func turtleToMiddleOfCanvas(){
     turtle.penUp()
@@ -46,26 +37,34 @@ func turtleToMiddleOfCanvas(){
     turtle.forward(steps: canvas.height / 2)
     turtle.right(by: 90)
 }
-turtleToMiddleOfCanvas()
-turtle.drawSelf()
 
-//Begin drawing an arrow
-let squareSize = 10
-turtle.penDown()
-turtle.forward(steps: 5 * squareSize)
-turtle.right(by: 90)
-turtle.forward(steps: 2 * squareSize)
-turtle.left(by: 135)
-turtle.forward(steps: Int(3.0 * Double(squareSize) * Double(2.0).squareRoot()))
-turtle.left(by: 90)
-turtle.forward(steps: Int(3.0 * Double(squareSize) * Double(2.0).squareRoot()))
-turtle.left(by: 135)
-turtle.forward(steps: 2 * squareSize)
-turtle.right(by: 90)
-turtle.forward(steps: 5 * squareSize)
-turtle.left(by: 90)
-turtle.forward(steps: 2 * squareSize)
-turtle.left(by: 90)
+//Draw an arrow
+func drawArrow(number: Int){
+    //Begin drawing an arrow
+    let squareSize = 10
+    for i in 1...number{
+        turtle.penUp()
+        turtle.forward(steps: 8 * squareSize)
+        turtle.penDown()
+        turtle.forward(steps: 5 * squareSize)
+        turtle.right(by: 90)
+        turtle.forward(steps: 2 * squareSize)
+        turtle.left(by: 135)
+        turtle.forward(steps: Int(3.0 * Double(squareSize) * Double(2.0).squareRoot()))
+        turtle.left(by: 90)
+        turtle.forward(steps: Int(3.0 * Double(squareSize) * Double(2.0).squareRoot()))
+        turtle.left(by: 135)
+        turtle.forward(steps: 2 * squareSize)
+        turtle.right(by: 90)
+        turtle.forward(steps: 5 * squareSize)
+        turtle.left(by: 90)
+        turtle.forward(steps: 2 * squareSize)
+        turtle.left(by: 90)
+    }
+}
+
+turtleToMiddleOfCanvas()
+drawArrow(number: 3)
 /*:
  ## Show the Live View
  Don't see any results?
