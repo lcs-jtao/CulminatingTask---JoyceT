@@ -49,21 +49,22 @@ func turtleToMiddleOfCanvas(){
 turtleToMiddleOfCanvas()
 turtle.drawSelf()
 
-//Draw an arrow
+//Begin drawing an arrow
+let squareSize = 10
 turtle.penDown()
-turtle.forward(steps: 50)
+turtle.forward(steps: 5 * squareSize)
 turtle.right(by: 90)
-turtle.forward(steps: 20)
+turtle.forward(steps: 2 * squareSize)
 turtle.left(by: 135)
-turtle.forward(steps: Int(30.0 * Double(2.0).squareRoot()))
+turtle.forward(steps: Int(3.0 * Double(squareSize) * Double(2.0).squareRoot()))
 turtle.left(by: 90)
-turtle.forward(steps: Int(30.0 * Double(2.0).squareRoot()))
+turtle.forward(steps: Int(3.0 * Double(squareSize) * Double(2.0).squareRoot()))
 turtle.left(by: 135)
-turtle.forward(steps: 20)
+turtle.forward(steps: 2 * squareSize)
 turtle.right(by: 90)
-turtle.forward(steps: 50)
+turtle.forward(steps: 5 * squareSize)
 turtle.left(by: 90)
-turtle.forward(steps: 20)
+turtle.forward(steps: 2 * squareSize)
 turtle.left(by: 90)
 /*:
  ## Show the Live View
