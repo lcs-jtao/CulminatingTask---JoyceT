@@ -26,6 +26,8 @@ let turtle = Tortoise(drawingUpon: canvas)
 // Show the canvas in the playground's live view
 PlaygroundPage.current.liveView = canvas
 
+canvas.highPerformance = true
+
 //Move the turtle to the centre of the canvas
 func turtleToMiddleOfCanvas(){
     turtle.penUp()
@@ -81,6 +83,7 @@ for _ in 1...numberOfRows{
     anotherRow()
 }
 
+canvas.highPerformance = false
 /*:
  ## Show the Live View
  Don't see any results?
