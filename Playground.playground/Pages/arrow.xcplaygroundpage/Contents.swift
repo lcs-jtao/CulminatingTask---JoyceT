@@ -44,17 +44,17 @@ func drawArrow(number: Int){
     let squareSize = 10
     for i in 1...number{
         turtle.penUp()
-        turtle.forward(steps: 8 * squareSize)
+        turtle.forward(steps: 7 * squareSize)
         turtle.penDown()
         turtle.forward(steps: 5 * squareSize)
         turtle.right(by: 90)
-        turtle.forward(steps: 2 * squareSize)
+        turtle.forward(steps: 1 * squareSize)
         turtle.left(by: 135)
-        turtle.forward(steps: Int(3.0 * Double(squareSize) * Double(2.0).squareRoot()))
+        turtle.forward(steps: Int(round(2.0 * Double(2).squareRoot() * Double(squareSize))))
         turtle.left(by: 90)
-        turtle.forward(steps: Int(3.0 * Double(squareSize) * Double(2.0).squareRoot()))
+        turtle.forward(steps: Int(round(2.0 * Double(2).squareRoot() * Double(squareSize))))
         turtle.left(by: 135)
-        turtle.forward(steps: 2 * squareSize)
+        turtle.forward(steps: 1 * squareSize)
         turtle.right(by: 90)
         turtle.forward(steps: 5 * squareSize)
         turtle.left(by: 90)
@@ -65,6 +65,7 @@ func drawArrow(number: Int){
 
 turtleToMiddleOfCanvas()
 drawArrow(number: 3)
+
 /*:
  ## Show the Live View
  Don't see any results?
