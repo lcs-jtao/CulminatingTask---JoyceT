@@ -38,13 +38,11 @@ func turtleToMiddleOfCanvas(){
     turtle.right(by: 90)
 }
 
+let squareSize = 20
 //Draw an arrow
 func drawArrow(number: Int){
     //Begin drawing an arrow
-    let squareSize = 10
-    for i in 1...number{
-        turtle.penUp()
-        turtle.forward(steps: 7 * squareSize)
+    for _ in 1...number{
         turtle.penDown()
         turtle.forward(steps: 5 * squareSize)
         turtle.right(by: 90)
@@ -60,11 +58,28 @@ func drawArrow(number: Int){
         turtle.left(by: 90)
         turtle.forward(steps: 2 * squareSize)
         turtle.left(by: 90)
+        turtle.penUp()
+        turtle.forward(steps: 7 * squareSize)
     }
 }
 
-turtleToMiddleOfCanvas()
-drawArrow(number: 3)
+//turtleToMiddleOfCanvas()
+var numberPerRow = (canvas.width / squareSize / 7) + 1
+var numberOfRows = (canvas.height / squareSize / 4) + 1
+
+//Switch line
+func anotherRow(){
+    turtle.penUp()
+    turtle.backward(steps: numberPerRow * 7 * squareSize)
+    turtle.left(by: 90)
+    turtle.forward(steps: 4 * squareSize)
+    turtle.right(by: 90)
+
+}
+for _ in 1...numberOfRows{
+    drawArrow(number: numberPerRow)
+    anotherRow()
+}
 
 /*:
  ## Show the Live View
