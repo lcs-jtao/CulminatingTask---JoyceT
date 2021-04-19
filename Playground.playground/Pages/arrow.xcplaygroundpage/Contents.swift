@@ -84,6 +84,7 @@ for _ in 1...numberOfRows{
 }
 
 canvas.highPerformance = false
+turtle.copySVGToClipboard()
 /*:
  ## Show the Live View
  Don't see any results?
