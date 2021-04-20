@@ -37,6 +37,11 @@ PlaygroundPage.current.liveView = canvas
  */
 canvas.highPerformance = true
 
+let sideLength = 25
+var lengthOfPattern = Int(round(Double(3).squareRoot()*Double(sideLength)+Double(2*sideLength)))
+var numberPerRow = (canvas.width / lengthOfPattern) + 1
+var numberOfRows = (canvas.height / lengthOfPattern) + 1
+
 func turtleToMiddleOfCanvas(){
     turtle.penUp()
     turtle.forward(steps: canvas.width / 2)
@@ -78,16 +83,26 @@ func repeatedPattern(){
 func switchLine(){
     turtle.penUp()
     turtle.left(by: 90)
-    turtle.forward(steps: Int(round(Double(3).squareRoot()*Double(sideLength)+Double(2*sideLength))))
+    turtle.forward(steps: lengthOfPattern)
     turtle.right(by: 90)
+    turtle.backward(steps: lengthOfPattern * numberPerRow)
+    turtle.penDown()
+}
+func forwardOne(){
+    turtle.penUp()
+    turtle.forward(steps: lengthOfPattern)
+    turtle.penDown()
 }
 
-turtleToMiddleOfCanvas()
+//MARK: draw patterns in black
+for _ in 1...numberOfRows{
+    for _ in 1...numberPerRow{
+        repeatedPattern()
+        forwardOne()
+    }
+    switchLine()
+}
 
-let sideLength = 25
-repeatedPattern()
-switchLine()
-repeatedPattern()
 
 canvas.highPerformance = false
 /*:
