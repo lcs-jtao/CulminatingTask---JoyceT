@@ -68,18 +68,26 @@ func drawTriangle(){
     turtle.left(by: 120)
     turtle.forward(steps: sideLength)
 }
+func repeatedPattern(){
+    for _ in 1...6{
+        drawSquare()
+        drawTriangle()
+        turtle.right(by: 90)
+    }
+}
+func switchLine(){
+    turtle.penUp()
+    turtle.left(by: 90)
+    turtle.forward(steps: Int(round(Double(3).squareRoot()*Double(sideLength)+Double(2*sideLength))))
+    turtle.right(by: 90)
+}
 
 turtleToMiddleOfCanvas()
 
 let sideLength = 25
-for _ in 1...6{
-    drawSquare()
-    drawTriangle()
-    turtle.right(by: 90)
-}
-turtle.penUp()
-turtle.right(by: 120)
-
+repeatedPattern()
+switchLine()
+repeatedPattern()
 
 canvas.highPerformance = false
 /*:
