@@ -73,7 +73,8 @@ func drawTriangle(){
     turtle.left(by: 120)
     turtle.forward(steps: sideLength)
 }
-func repeatedPattern(){
+func drawPattern(){
+    turtle.setPenColor(to: Color.black)
     for _ in 1...6{
         drawSquare()
         drawTriangle()
@@ -94,15 +95,46 @@ func forwardOne(){
     turtle.penDown()
 }
 
-//MARK: draw patterns in black
+//helps redraw hexagons in green
+func drawHexagon(){
+    turtle.setPenColor(to: Color.green)
+    for _ in 1...6{
+        turtle.forward(steps: sideLength)
+        turtle.left(by: 60)
+    }
+}
+//helps redraw dodecagons in red
+func drawDodecagon(){
+    turtle.setPenColor(to: Color.red)
+    for _ in 1...12{
+        turtle.forward(steps: sideLength)
+        turtle.left(by: 30)
+    }
+}
+func changeShape(){
+    turtle.penUp()
+    turtle.right(by: 90)
+    turtle.forward(steps: sideLength)
+    turtle.left(by: 90)
+    turtle.penDown()
+    drawDodecagon()
+    turtle.penUp()
+    turtle.left(by: 90)
+    turtle.forward(steps: sideLength)
+    turtle.right(by: 90)
+    turtle.penDown()
+}
+
+//MARK: actual drawing part :)
 for _ in 1...numberOfRows{
     for _ in 1...numberPerRow{
-        repeatedPattern()
+        drawPattern()
+        drawHexagon()
+        changeShape()
         forwardOne()
     }
     switchLine()
 }
-
 
 canvas.highPerformance = false
 /*:
