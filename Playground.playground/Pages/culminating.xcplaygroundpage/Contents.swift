@@ -37,11 +37,19 @@ PlaygroundPage.current.liveView = canvas
  */
 canvas.highPerformance = true
 
+//Draw a boundary for the tesselation
+//canvas.defaultBorderWidth = 5
+//canvas.drawShapesWithFill = false
+//canvas.drawShapesWithBorders = true
+//canvas.borderColor = Color(hue: 0, saturation: 25, brightness: 0, alpha: 25)
+//canvas.drawRectangle(at: Point(x:25, y:75), width: 500, height: 500)
+
 let sideLength = 25
 var lengthOfPattern = Int(round(Double(3).squareRoot()*Double(sideLength)+Double(2*sideLength)))
-var numberPerRow = (canvas.width / lengthOfPattern) + 1
-var numberOfRows = (canvas.height / lengthOfPattern) + 1
+var numberPerRow = (500 / lengthOfPattern) + 1
+var numberOfRows = (500 / lengthOfPattern) + 1
 
+//MARK: Functions
 func turtleToMiddleOfCanvas(){
     turtle.penUp()
     turtle.forward(steps: canvas.width / 2)
@@ -95,7 +103,6 @@ func forwardOne(){
     turtle.penDown()
 }
 
-//helps redraw hexagons in green
 func drawHexagon(){
     turtle.setPenColor(to: Color.green)
     for _ in 1...6{
@@ -103,7 +110,6 @@ func drawHexagon(){
         turtle.left(by: 60)
     }
 }
-//helps redraw dodecagons in red
 func drawDodecagon(){
     turtle.setPenColor(to: Color.red)
     for _ in 1...12{
@@ -125,16 +131,42 @@ func changeShape(){
     turtle.penDown()
 }
 
-//MARK: actual drawing part :)
+//MARK: starts drawing
+//draw the pattern in black
 for _ in 1...numberOfRows{
     for _ in 1...numberPerRow{
         drawPattern()
+        forwardOne()
+    }
+    switchLine()
+}
+turtle.penUp()
+turtle.goToHome()
+turtle.penDown()
+
+//draw the hexagon (inner edge) in green
+for _ in 1...numberOfRows{
+    for _ in 1...numberPerRow{
         drawHexagon()
+        forwardOne()
+    }
+    switchLine()
+}
+turtle.penUp()
+turtle.goToHome()
+turtle.penDown()
+
+//draw the dodecagon (outer edge) in red
+for _ in 1...numberOfRows{
+    for _ in 1...numberPerRow{
         changeShape()
         forwardOne()
     }
     switchLine()
 }
+turtle.penUp()
+turtle.goToHome()
+turtle.penDown()
 
 canvas.highPerformance = false
 /*:
