@@ -5,7 +5,6 @@
         <page name='Tortoise Examples'/>
         <page name='tutorial'/>
         <page name='arrow'/>
-        <page name='Emtpy Canvas 4'/>
         <page name='Empty Canvas 5'/>
         <page name='Empty Canvas 6'/>
         <page name='Empty Canvas 7'/>
@@ -18,5 +17,6 @@
         <page name='Empty Canvas 14'/>
         <page name='Empty Canvas 15'/>
         <page name='Blank canvas to copy'/>
+        <page name='Culminating'/>
     </pages>
 </playground>
