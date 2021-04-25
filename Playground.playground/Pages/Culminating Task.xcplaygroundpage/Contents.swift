@@ -63,23 +63,29 @@ func turtleToStartPoint(){
     turtle.penDown()
 }
 func drawSquare(){
+    turtle.penUp()
+    turtle.forward(steps: sideLength)
     turtle.penDown()
-    turtle.forward(steps: sideLength)
     turtle.right(by: 90)
     turtle.forward(steps: sideLength)
     turtle.right(by: 90)
+    turtle.penUp()
     turtle.forward(steps: sideLength)
+    turtle.penDown()
     turtle.right(by: 90)
     turtle.forward(steps: sideLength)
 }
 func drawTriangle(){
+    turtle.penUp()
+    turtle.right(by: 90)
+    turtle.forward(steps: sideLength)
     turtle.penDown()
     turtle.right(by: 90)
     turtle.forward(steps: sideLength)
-    turtle.right(by: 90)
-    turtle.forward(steps: sideLength)
     turtle.left(by: 120)
+    turtle.penUp()
     turtle.forward(steps: sideLength)
+    turtle.penDown()
     turtle.left(by: 120)
     turtle.forward(steps: sideLength)
 }
@@ -107,7 +113,7 @@ func forwardOne(){
 }
 //redraw inner and outer edge in different colors
 func drawHexagon(){
-    turtle.setPenColor(to: Color.green)
+    turtle.setPenColor(to: Color.purple)
     for _ in 1...6{
         turtle.forward(steps: sideLength)
         turtle.left(by: 60)
@@ -142,7 +148,7 @@ func drawTestLines(line: Int){
     turtle.right(by: 90)
     turtle.penDown()
     if line == 1{
-        turtle.setPenColor(to: Color.green)
+        turtle.setPenColor(to: Color.purple)
         turtle.forward(steps: 200)
         turtle.penUp()
     } else if line == 2{
@@ -170,7 +176,7 @@ for _ in 1...numberOfRows{
 drawTestLines(line: 1)
 turtleToStartPoint()
 
-//draw the hexagon (inner edge) in green
+//draw the hexagon (inner edge) in purple
 for _ in 1...numberOfRows{
     for _ in 1...numberPerRow{
         drawHexagon()
