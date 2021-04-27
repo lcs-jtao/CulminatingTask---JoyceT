@@ -35,10 +35,49 @@ PlaygroundPage.current.liveView = canvas
  [Documentation](http://russellgordon.ca/CanvasGraphics/Documentation/) is available.
 
  */
+canvas.highPerformance = true
 
-// Replace this comment with your first comment – what is the goal of the code you're about to write?
-canvas.drawRectangle(at: Point(x: 50, y: 75), width: 100, height: 200)
+let sideLength = 25
+let startPointx = 100
+let startPointy = 100
+"""
+var lengthOfPattern = Int(round(Double(3).squareRoot()*Double(sideLength)+Double(2*sideLength)))
+var numberPerRow = ((canvas.width - startPointy) / lengthOfPattern)
+var numberOfRows = ((canvas.width - startPointy) / lengthOfPattern)
+"""
 
+//MARK: Functions
+func turtleToStartPoint(){
+    turtle.penUp()
+    turtle.goToHome()
+    turtle.forward(steps: startPointx)
+    turtle.left(by: 90)
+    turtle.forward(steps: startPointx)
+    turtle.right(by: 90)
+    turtle.penDown()
+}
+func drawSquare(){
+    for _ in 1...4{
+        turtle.forward(steps: sideLength)
+        turtle.right(by: 90)
+    }
+    turtle.forward(steps: sideLength)
+}
+func drawPattern(){
+    turtle.right(by: 30)
+    drawSquare()
+    turtle.left(by: 60)
+    drawSquare()
+    turtle.left(by: 120)
+    drawSquare()
+    turtle.left(by: 60)
+    drawSquare()
+    turtle.left(by: 120)
+}
+turtleToStartPoint()
+drawPattern()
+
+canvas.highPerformance = false
 /*:
  ## Show the Live View
  Don't see any results?
