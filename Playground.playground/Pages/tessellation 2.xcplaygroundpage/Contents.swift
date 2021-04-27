@@ -57,10 +57,13 @@ func turtleToStartPoint(){
     turtle.penDown()
 }
 func drawSquare(){
+    turtle.setFillColor(to: Color.black)
+    turtle.beginFill()
     for _ in 1...4{
         turtle.forward(steps: sideLength)
         turtle.right(by: 90)
     }
+    turtle.endFill()
     turtle.forward(steps: sideLength)
 }
 func drawPattern(){
