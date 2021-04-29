@@ -40,6 +40,10 @@ canvas.highPerformance = true
 let sideLength = 25
 let startPointx = 100
 let startPointy = 100
+var lengthOfPattern = Int(round(Double(3).squareRoot()*Double(sideLength)+Double(sideLength)))
+var numberPerRow = ((canvas.width - startPointy) / lengthOfPattern)
+var numberOfRows = ((canvas.width - startPointy) / lengthOfPattern)
+
 
 //MARK: Functions
 func turtleToStartPoint(){
@@ -54,12 +58,10 @@ func turtleToStartPoint(){
 //draw one pattern
 func drawSquare(){
     turtle.setFillColor(to: Color.black)
-    turtle.beginFill()
     for _ in 1...4{
         turtle.forward(steps: sideLength)
         turtle.right(by: 90)
     }
-    turtle.endFill()
     turtle.forward(steps: sideLength)
 }
 func fillSquares(){
@@ -102,12 +104,31 @@ func drawPattern(){
     fillSquares()
     turtle.left(by: 150)
 }
-
+//move to draw the next one
+func switchLine(){
+    turtle.penUp()
+    turtle.left(by: 90)
+    turtle.forward(steps: lengthOfPattern)
+    turtle.right(by: 90)
+    turtle.backward(steps: lengthOfPattern * numberPerRow)
+    turtle.penDown()
+}
+func forwardOne(){
+    turtle.penUp()
+    turtle.forward(steps: lengthOfPattern)
+    turtle.penDown()
+}
 
 //MARK: starts drawing
 turtleToStartPoint()
 //draw the pattern in black
-drawPattern()
+for _ in 1...numberOfRows{
+    for _ in 1...numberPerRow{
+        drawPattern()
+        forwardOne()
+    }
+    switchLine()
+}
 turtleToStartPoint()
 
 canvas.highPerformance = false
